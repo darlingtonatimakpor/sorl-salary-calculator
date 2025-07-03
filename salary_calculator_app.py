@@ -47,7 +47,7 @@ if st.button("Calculate Salary"):
     net_salary = taxable_income + overtime - total_tax
 
     # Display key metrics
-    st.subheader("📊 Salary Breakdown")
+    st.subheader("Salary Breakdown")
     col1, col2 = st.columns(2)
     col1.metric("Total Allowance", f"GHS {round(allowance, 2)}")
     col2.metric("Net Salary", f"GHS {round(net_salary, 2)}")
@@ -67,4 +67,4 @@ if st.button("Calculate Salary"):
 
     csv_buffer = io.StringIO()
     report.to_csv(csv_buffer, index=False)
-    st.download_button("📥 Download Salary Report", data=csv_buffer.getvalue(), file_name="salary_report.csv", mime="text/csv")
+    st.download_button("Download Salary Report", data=csv_buffer.getvalue(), file_name="salary_report.csv", mime="text/csv")
