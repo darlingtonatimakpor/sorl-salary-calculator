@@ -23,13 +23,12 @@ if st.button("Calculate Salary"):
     monthly_basic = work_days * daily_wage
     total_days_worked = work_days + overtime_days
     leave_allowance = daily_wage * leave_days
-    food_allowance = 10 * total_days_worked
     risk_allowance = 10 * total_days_worked
     night_allowance = 10 * night_shifts
 
     attendance_bonus = 100 if total_days_worked >= 19 else 0
 
-    allowance = risk_allowance + night_allowance + attendance_bonus + food_allowance + leave_allowance
+    allowance = risk_allowance + night_allowance + attendance_bonus + leave_allowance
     taxable_income = 0.945 * monthly_basic + allowance
     k = 730
     income_tax = 0.175 * (taxable_income - k) + 18.5
@@ -56,15 +55,26 @@ if st.button("Calculate Salary"):
 
     # Prepare CSV content
     report = pd.DataFrame({
-        "Item": ["Basic Salary", "Daily Wage", "Work Days", "Total Days Worked", "Leave Allowance", "Risk Allowance", "Night Allowance", "Attendance Bonus", "Food Allowance", "Total Allowance", "Monthly Basic (after deduction)", "Taxable Income", "Income Tax", "Overtime", "Overtime Tax", "Total Tax", "Net Salary"],
+        "Item": [
+            "Basic Salary", "Daily Wage", "Work Days", "Total Days Worked",
+            "Leave Allowance", "Risk Allowance", "Night Allowance", "Attendance Bonus",
+            "Food Allowance", "Total Allowance", "Monthly Basic (after deduction)",
+            "Taxable Income", "Income Tax", "Overtime", "Overtime Tax", "Total Tax", "Net Salary"
+        ],
         "Amount (GHS)": [
             basic_salary, round(daily_wage, 2), work_days, total_days_worked,
             round(leave_allowance, 2), round(risk_allowance, 2), round(night_allowance, 2), attendance_bonus,
-            round(food_allowance, 2), round(allowance, 2), round(0.945 * monthly_basic, 2), round(taxable_income, 2),
-            round(income_tax, 2), round(overtime, 2), round(overtime_tax, 2), round(total_tax, 2), round(net_salary, 2)
+            round(food_allowance, 2), round(allowance, 2), round(0.945 * monthly_basic, 2),
+            round(taxable_income, 2), round(income_tax, 2), round(overtime, 2),
+            round(overtime_tax, 2), round(total_tax, 2), round(net_salary, 2)
         ]
     })
 
     csv_buffer = io.StringIO()
     report.to_csv(csv_buffer, index=False)
-    st.download_button("Download Salary Report", data=csv_buffer.getvalue(), file_name="salary_report.csv", mime="text/csv")
+    st.download_button(
+        label="Download Salary Report",
+        data=csv_buffer.getvalue(),
+        file_name="salary_report.csv",
+        mime="text/csv"
+    )
