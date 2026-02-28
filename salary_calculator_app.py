@@ -26,7 +26,7 @@ if st.button("Calculate Salary"):
     risk_allowance = 10 * total_days_worked
     night_allowance = 10 * night_shifts
 
-    attendance_bonus = 100 if total_days_worked >= 19 else 0
+    attendance_bonus = 100 if total_days_worked >= 18 else 0
 
     allowance = risk_allowance + night_allowance + attendance_bonus + leave_allowance
     taxable_income = 0.945 * monthly_basic + allowance
@@ -78,3 +78,4 @@ if st.button("Calculate Salary"):
         file_name="salary_report.csv",
         mime="text/csv"
     )
+
