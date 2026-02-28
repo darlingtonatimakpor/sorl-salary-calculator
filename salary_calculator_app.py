@@ -16,8 +16,7 @@ with col1:
 
 with col2:
     leave_days = st.number_input("Enter number of contract leave days:", min_value=0, max_value=31)
-    overtime_hours = st.number_input("Enter number of overtime hours:", min_value=0, step=0.1,
-    format="%.2f")
+    overtime_hours = st.number_input("Enter number of overtime hours:", min_value=0)
 
 if st.button("Calculate Salary"):
     daily_wage = float(basic_salary / 22)
@@ -79,6 +78,7 @@ if st.button("Calculate Salary"):
         file_name="salary_report.csv",
         mime="text/csv"
     )
+
 
 
 
