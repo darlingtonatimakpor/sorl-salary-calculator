@@ -63,7 +63,7 @@ if st.button("Calculate Salary"):
             round(leave_allowance, 2), round(risk_allowance, 2), round(night_allowance, 2), attendance_bonus,
             round(allowance, 2), round(0.945 * monthly_basic, 2),
             round(taxable_income, 2), round(income_tax, 2), round(overtime, 2),
-            round(total_tax, 2), round(net_salary, 2)
+            round(net_salary, 2)
         ]
     })
 
