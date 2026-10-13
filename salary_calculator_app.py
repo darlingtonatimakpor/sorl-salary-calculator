@@ -32,14 +32,16 @@ if st.button("Calculate Salary"):
 
     overtime_per_hour = 1.5 * (basic_salary / 216)
     overtime = overtime_hours * overtime_per_hour + 2 * overtime_days * (basic_salary / 27)
+    k = 768
 
     if 12*monthly_basic <= 18000:
-       taxable_income = 0.945 * monthly_basic + allowance
+       taxable_income_1 = 0.945 * monthly_basic + allowance
+        income_tax = 0.175 * (taxable_income_1 - k) + 14
+     
     else:
-         taxable_income = 0.945 * monthly_basic + allowance + overtime 
+         taxable_income_2 = 0.945 * monthly_basic + allowance + overtime 
+          income_tax = 0.175 * (taxable_income_2 - k) + 14
     
-    k = 768
-    income_tax = 0.175 * (taxable_income - k) + 14
 
     
     half_basic = monthly_basic / 2
@@ -52,9 +54,9 @@ if st.button("Calculate Salary"):
 
     total_tax = income_tax + overtime_tax
     if 12*basic_salary > 18000 and overtime == 0:
-        net_salary = taxable_income - total_tax
+        net_salary = taxable_income_2 - total_tax
     else:
-        net_salary = taxable_income + overtime - total_tax
+        net_salary = taxable_income_1 + overtime - total_tax
     
 
     # Display key metrics
