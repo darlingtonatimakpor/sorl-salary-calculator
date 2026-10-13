@@ -53,7 +53,8 @@ if st.button("Calculate Salary"):
     total_tax = income_tax + overtime_tax
     if 12*basic_salary > 18000 and overtime == 0:
         net_salary = taxable_income - total_tax
-    else net_salary = taxable_income + overtime - total_tax
+    else:
+        net_salary = taxable_income + overtime - total_tax
     
 
     # Display key metrics
