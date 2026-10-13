@@ -29,21 +29,32 @@ if st.button("Calculate Salary"):
     attendance_bonus = 100 if total_days_worked >= 18 else 0
 
     allowance = risk_allowance + night_allowance + attendance_bonus + leave_allowance
-    taxable_income = 0.945 * monthly_basic + allowance
-    k = 730
-    income_tax = 0.175 * (taxable_income - k) + 18.5
 
     overtime_per_hour = 1.5 * (basic_salary / 216)
     overtime = overtime_hours * overtime_per_hour + 2 * overtime_days * (basic_salary / 27)
-    half_basic = monthly_basic / 2
 
-    if overtime <= half_basic:
-        overtime_tax = 0.05 * overtime
+    if 12*monthly_basic <= 18000
+       taxable_income = 0.945 * monthly_basic + allowance
     else:
+         taxable_income = 0.945 * monthly_basic + allowance + overtime 
+    
+    k = 768
+    income_tax = 0.175 * (taxable_income - k) + 14
+
+    
+    half_basic = monthly_basic / 2
+    if 12*monthly_basic > 0:
+        overtime_tax = 0
+    elif 12*monthly_basic <= 18000 and overtime <= half_basic:
+        overtime_tax = 0.05 * overtime
+    elif 12*monthly_basic <= 18000 and overtime > half_basic:
         overtime_tax = 0.05 * half_basic + 0.10 * (overtime - half_basic)
 
     total_tax = income_tax + overtime_tax
-    net_salary = taxable_income + overtime - total_tax
+    if 12*basic_salary > 18000 and overtime == 0:
+        net_salary = taxable_income - total_tax
+    else net_salary = taxable_income + overtime - total_tax
+    
 
     # Display key metrics
     st.subheader("Salary Breakdown")
