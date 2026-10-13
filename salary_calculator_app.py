@@ -35,12 +35,12 @@ if st.button("Calculate Salary"):
     k = 768
 
     if 12*monthly_basic <= 18000:
-       taxable_income_1 = 0.945 * monthly_basic + allowance
+        taxable_income_1 = 0.945 * monthly_basic + allowance
         income_tax = 0.175 * (taxable_income_1 - k) + 14
      
     else:
-         taxable_income_2 = 0.945 * monthly_basic + allowance + overtime 
-          income_tax = 0.175 * (taxable_income_2 - k) + 14
+        taxable_income_2 = 0.945 * monthly_basic + allowance + overtime 
+        income_tax = 0.175 * (taxable_income_2 - k) + 14
     
 
     
