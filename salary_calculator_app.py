@@ -48,22 +48,22 @@ if st.button("Calculate Salary"):
     col1.metric("Total Allowance", f"GHS {round(allowance, 2)}")
     col2.metric("Net Salary", f"GHS {round(net_salary, 2)}")
     col1.metric("Income Tax", f"GHS {round(income_tax, 2)}")
-    col2.metric("Overtime Tax", f"GHS {round(overtime_tax, 2)}")
 
+    
     # Prepare CSV content
     report = pd.DataFrame({
         "Item": [
             "Basic Salary", "Daily Wage", "Work Days", "Total Days Worked",
             "Leave Allowance", "Risk Allowance", "Night Allowance", "Attendance Bonus",
             "Total Allowance", "Monthly Basic (after deduction)",
-            "Taxable Income", "Income Tax", "Overtime", "Overtime Tax", "Total Tax", "Net Salary"
+            "Taxable Income", "Income Tax", "Overtime", "Net Salary"
         ],
         "Amount (GHS)": [
             basic_salary, round(daily_wage, 2), work_days, total_days_worked,
             round(leave_allowance, 2), round(risk_allowance, 2), round(night_allowance, 2), attendance_bonus,
             round(allowance, 2), round(0.945 * monthly_basic, 2),
             round(taxable_income, 2), round(income_tax, 2), round(overtime, 2),
-            round(overtime_tax, 2), round(total_tax, 2), round(net_salary, 2)
+            round(total_tax, 2), round(net_salary, 2)
         ]
     })
 
