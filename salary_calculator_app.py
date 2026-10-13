@@ -33,7 +33,7 @@ if st.button("Calculate Salary"):
     overtime_per_hour = 1.5 * (basic_salary / 216)
     overtime = overtime_hours * overtime_per_hour + 2 * overtime_days * (basic_salary / 27)
 
-    if 12*monthly_basic <= 18000
+    if 12*monthly_basic <= 18000:
        taxable_income = 0.945 * monthly_basic + allowance
     else:
          taxable_income = 0.945 * monthly_basic + allowance + overtime 
